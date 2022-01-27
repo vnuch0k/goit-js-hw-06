@@ -16,23 +16,43 @@ const images = [
 
 
 const imagesContainerEl = document.querySelector('.gallery');
+
+const makeImageMarkup = ({url,alt}) => {
+  return `<li><img src="${url}" alt="${alt}"></li>`
+}
+
+const makeGalerryMarkup = images.map(makeImageMarkup).join('')
+
+
+imagesContainerEl.insertAdjacentHTML('afterbegin', makeGalerryMarkup)
+
 imagesContainerEl.style.display = 'flex'
 imagesContainerEl.style.listStyle = 'none'
 
-const elements = images.map(img => {
-  const itemEl = document.createElement('li')
-  itemEl.classList.add('gallery__item')
-  itemEl.style.display = 'flex';
-  itemEl.style.marginRight = '30px';
 
-  const imgEl = document.createElement('img')
-  imgEl.classList.add('gallery__img')
-  imgEl.src = img.url
-  imgEl.alt = img.alt
-  imgEl.width = 400
-  itemEl.appendChild(imgEl)
+//   const itemEl = document.querySelectorAll('li')
+//   itemEl.classList.add('gallery__item')
+//   itemEl.style.display = 'flex';
+// itemEl.style.marginRight = '30px';
+  
+// const imgEl = document.querySelectorAll('img')
+// imgEl.width = 400
 
-  return itemEl
-})
+// const elements = images.map(img => {
+//   const itemEl = document.createElement('li')
+//   itemEl.classList.add('gallery__item')
+//   itemEl.style.display = 'flex';
+//   itemEl.style.marginRight = '30px';
 
-imagesContainerEl.append(...elements);
+//   const imgEl = document.createElement('img')
+//   imgEl.classList.add('gallery__img')
+//   imgEl.src = img.url
+//   imgEl.alt = img.alt
+//   imgEl.width = 400
+//   itemEl.appendChild(imgEl)
+
+//   return itemEl
+// })
+
+// // imagesContainerEl.append(...elements);
+
